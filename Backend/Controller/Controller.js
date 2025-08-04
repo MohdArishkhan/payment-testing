@@ -37,13 +37,13 @@ export const verifyPayment = async (req, res) => {
       .update(body.toString())
       .digest("hex");
 
-    console.log("✅ Expected Signature:", expectedSignature);
+    console.log(" Expected Signature:", expectedSignature);
 
     if (expectedSignature === razorpay_signature) {
       console.log("🎉 Payment verification SUCCESS");
       res.status(200).json({  success: true, message: "Payment verified successfully" });
     } else {
-      console.warn("⚠️ Signature MISMATCH");
+      console.warn(" Signature MISMATCH");
       res.status(400).json({ failure :true , message: "Invalid signature" });
     }
 
